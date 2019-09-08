@@ -532,9 +532,9 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
                 bot._speechRecognitionListener._voiceHandler = _tcpVoiceHandler;
                 _botsBufferedAudio[audio.ClientGuid] = bot;
             }
-            //client.AddClientAudioSamples(audio);
-            //recorder.AddClientAudioSamples(audio);
-            bot.AddClientAudioSamples(audio);
+            client.AddClientAudioSamples(audio);
+            recorder.AddClientAudioSamples(audio);
+            //bot.AddClientAudioSamples(audio);
         }
 
         private void RemoveClientBuffer(SRClient srClient)
