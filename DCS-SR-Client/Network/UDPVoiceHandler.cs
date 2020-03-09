@@ -141,7 +141,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
         {
             _udpLastReceived = 0;
             _ready = false;
-            _listener = new UdpClient();
+            _listener = new UdpClient(new IPEndPoint(IPAddress.Any, _port));
             try
             {
                 _listener.AllowNatTraversal(true);
@@ -220,15 +220,27 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
 
             _packetNumber = 1; //reset packet number
 
+            var listenLoop = Task.Run(async() => await StartListenLoop());
+            listenLoop.Wait();
+
+            _ready = false;
+
+            //stop UI Refreshing
+            _updateTimer.Stop();
+
+            CallOnMainVOIPConnect(false);
+        }
+
+        public async Task StartListenLoop()
+        {
             while (!_stop)
             {
                 _ready = true;
                 try
                 {
-                    var groupEp = new IPEndPoint(IPAddress.Any, _port);
-                    //   listener.Client.ReceiveTimeout = 3000;
 
-                    var bytes = _listener.Receive(ref groupEp);
+                    var udpRecieveResult = await _listener.ReceiveAsync();
+                    byte[] bytes = udpRecieveResult.Buffer;
 
                     if (bytes?.Length == 22)
                     {
@@ -243,16 +255,9 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
                 }
                 catch (Exception e)
                 {
-                    //  logger.Error(e, "error listening for UDP Voip");
+                    Logger.Error(e, "Exception during UDP Voip listen loop");
                 }
             }
-
-            _ready = false;
-
-            //stop UI Refreshing
-            _updateTimer.Stop();
-
-            CallOnMainVOIPConnect(false);
         }
 
         public void StartTimer()
