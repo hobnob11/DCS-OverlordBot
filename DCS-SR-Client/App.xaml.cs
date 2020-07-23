@@ -194,24 +194,6 @@ namespace DCS_SR_Client
             return builder.ToString();
         }
 
-        private bool IsClientRunning()
-        {
-
-            Process currentProcess = Process.GetCurrentProcess();
-            string currentProcessName = currentProcess.ProcessName.ToLower().Trim();
-
-            foreach (Process clsProcess in Process.GetProcesses())
-            {
-                if (clsProcess.Id != currentProcess.Id &&
-                    clsProcess.ProcessName.ToLower().Trim() == currentProcessName)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
         /* 
          * Changes to the logging configuration in this method must be replicated in
          * this VS project's NLog.config file

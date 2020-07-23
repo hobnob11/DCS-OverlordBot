@@ -35,12 +35,10 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
 
         private volatile bool _stop;
 
-        public UDPPositionHandler(ConcurrentDictionary<string, SRClient> clientsList, IEventAggregator eventAggregator)
+        public UDPPositionHandler(ConcurrentDictionary<string, SRClient> clientsList)
         {
             _clientsList = clientsList;
         }
-
-
 
         public void Listen()
         {
@@ -162,7 +160,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
 
                                     if ((udpVoicePacket != null))
                                     {
-                                        var outgoingVoice = GenerateOutgoingPacket(udpVoicePacket, udpPacket, client);
+                                        var outgoingVoice = GenerateOutgoingPacket(udpPacket, client);
 
                                         if (outgoingVoice != null)
                                         {
@@ -234,8 +232,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
                 }
         }
 
-        private OutgoingUDPPackets GenerateOutgoingPacket(UDPVoicePacket udpVoice, PendingPacket pendingPacket,
-            SRClient fromClient)
+        private OutgoingUDPPackets GenerateOutgoingPacket(PendingPacket pendingPacket, SRClient fromClient)
         {
             var outgoingList = new HashSet<IPEndPoint>();
 

@@ -345,7 +345,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio
                 _wasapiCapture?.Dispose();
                 _wasapiCapture = null;
 
-                _resampler?.Dispose(true);
+                _resampler?.Dispose();
                 _resampler = null;
 
                 _waveOut?.Dispose();

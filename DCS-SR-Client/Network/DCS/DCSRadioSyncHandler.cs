@@ -26,9 +26,6 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network.DCS
         private readonly SyncedServerSettings _serverSettings = SyncedServerSettings.Instance;
         private readonly ConnectedClientsSingleton _clients = ConnectedClientsSingleton.Instance;
 
-        private static readonly int RADIO_UPDATE_PING_INTERVAL = 60; //send update regardless of change every X seconds
-
-
         private UdpClient _dcsUdpListener;
         private UdpClient _dcsRadioUpdateSender;
 

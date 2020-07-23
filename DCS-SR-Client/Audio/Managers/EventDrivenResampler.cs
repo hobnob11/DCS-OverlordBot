@@ -11,9 +11,6 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
         private readonly bool windowsN;
         private ResamplerDmoStream dmoResampler;
 
-        private readonly WaveFormat input;
-        private readonly WaveFormat output;
-        private readonly WdlResampler resampler;
         private readonly WdlResamplingSampleProvider mediaFoundationResampler;
         private readonly BufferedWaveProvider buf;
         private readonly IWaveProvider waveOut;
@@ -22,8 +19,6 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
         public EventDrivenResampler(bool windowsN, WaveFormat input,WaveFormat output)
         {
             this.windowsN = windowsN;
-            this.input = input;
-            this.output = output;
             buf = new BufferedWaveProvider(input);
             buf.ReadFully = false;
 
@@ -154,8 +149,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
         /// <summary>
         /// Dispose
         /// </summary>
-        /// <param name="disposing">True if disposing (not from finalizer)</param>
-        public void Dispose(bool disposing)
+        public void Dispose()
         {
             buf.ClearBuffer();
             if (windowsN)
@@ -169,7 +163,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
             }
         }
         ~EventDrivenResampler(){
-            Dispose(false);
+            Dispose();
         }
 
     }

@@ -1140,11 +1140,6 @@ namespace Installer
         {
             if (!Directory.Exists(path))
             {
-                var sid = new SecurityIdentifier(WellKnownSidType.AuthenticatedUserSid, null);
-
-                // Create the rules
-                var writerule = new FileSystemAccessRule(sid, FileSystemRights.Write, AccessControlType.Allow);
-
                 var dir = Directory.CreateDirectory(path);
 
                 dir.Refresh();

@@ -691,7 +691,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
             SRClient transmittingClient;
             if (_clients.TryGetValue(transmissingClientGuid, out transmittingClient))
             {
-                double dist = 0;
+                double dist;
                
                 var myLatLng = _clientStateSingleton.PlayerCoaltionLocationMetadata.LngLngPosition;
                 var clientLatLng = transmittingClient.LatLngPosition;
@@ -801,7 +801,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
             {
                 // Always add currently selected radio (if valid)
                 var currentSelected = _clientStateSingleton.DcsPlayerRadioInfo.selected;
-                RadioInformation currentlySelectedRadio = null;
+                RadioInformation currentlySelectedRadio;
                 if (currentSelected >= 0
                     && currentSelected < _clientStateSingleton.DcsPlayerRadioInfo.radios.Length)
                 {
@@ -844,12 +844,12 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
             return transmittingRadios;
         }
 
-        public bool Send(byte[] bytes, int len)
+        public bool Send(byte[] bytes)
         {
             // List of radios the transmission is sent to (can me multiple if simultaneous transmission is enabled)
             List<RadioInformation> transmittingRadios;
             //if either PTT is true, a microphone is available && socket connected etc
-            var sendingOn = -1;
+            int sendingOn;
             if (_ready
                 && _listener != null
                 && _clientStateSingleton.DcsPlayerRadioInfo.IsCurrent()

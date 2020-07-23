@@ -147,13 +147,13 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
                         // Do nothing for now
                         break;
                     case NetworkMessage.MessageType.UPDATE:
-                        HandleClientMetaDataUpdate(state, message, true);
+                        HandleClientMetaDataUpdate(message, true);
                         break;
                     case NetworkMessage.MessageType.RADIO_UPDATE:
                         bool showTuned = _serverSettings.GetGeneralSetting(ServerSettingsKeys.SHOW_TUNED_COUNT)
                             .BoolValue;
-                        HandleClientMetaDataUpdate(state, message, !showTuned);
-                        HandleClientRadioUpdate(state, message, showTuned);
+                        HandleClientMetaDataUpdate(message, !showTuned);
+                        HandleClientRadioUpdate(message, showTuned);
                         break;
                     case NetworkMessage.MessageType.SYNC:
                         HandleRadioClientsSync(state, message);
@@ -245,7 +245,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
             session.Send(replyMessage.Encode());
         }
 
-        private void HandleClientMetaDataUpdate(SRSClientSession session, NetworkMessage message, bool send)
+        private void HandleClientMetaDataUpdate(NetworkMessage message, bool send)
         {
             if (_clients.ContainsKey(message.Client.ClientGuid))
             {
@@ -307,7 +307,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
           
         }
 
-        private void HandleClientRadioUpdate(SRSClientSession session, NetworkMessage message, bool send)
+        private void HandleClientRadioUpdate(NetworkMessage message, bool send)
         {
             if (_clients.ContainsKey(message.Client.ClientGuid))
             {
@@ -323,7 +323,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
                     //update to local ticks
                     message.Client.RadioInfo.LastUpdate = DateTime.Now.Ticks;
 
-                    var changed = false;
+                    bool changed;
 
                     if (client.RadioInfo == null)
                     {

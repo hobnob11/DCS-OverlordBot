@@ -6,16 +6,16 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio
 {
     public abstract class AudioProvider
     {
-        protected readonly Settings.ProfileSettingsStore globalSettings;
+        protected readonly ProfileSettingsStore globalSettings;
 
         public AudioProvider()
         {
-            globalSettings = Settings.GlobalSettingsStore.Instance.ProfileSettingsStore;
+            globalSettings = GlobalSettingsStore.Instance.ProfileSettingsStore;
         }
 
         public byte[] SeperateAudio(byte[] pcmAudio, int radioId)
         {
-            var settingType = ProfileSettingsKeys.Radio1Channel;
+            ProfileSettingsKeys settingType;
 
             if (radioId == 0)
             {

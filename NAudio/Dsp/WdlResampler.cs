@@ -187,7 +187,7 @@ namespace NAudio.Dsp
                 }
             }
 
-            int sreq = 0;
+            int sreq;
 
             if (!m_feedmode) sreq = (int) (m_ratio * out_samples) + 4 + fsize - m_samples_in_rsinbuf;
             else sreq = out_samples;

@@ -357,7 +357,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
                             Buffer.BlockCopy(buff, 0, encoded, 0, len);
 
                             // Console.WriteLine("Sending: " + e.BytesRecorded);
-                            if (_udpVoiceHandler.Send(encoded, len))
+                            if (_udpVoiceHandler.Send(encoded))
                             {
                                 //send audio so play over local too
                                 _micWaveOutBuffer?.AddSamples(pcmBytes, 0, pcmBytes.Length);
@@ -593,7 +593,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
                 _wasapiCapture?.Dispose();
                 _wasapiCapture = null;
 
-                _resampler?.Dispose(true);
+                _resampler?.Dispose();
                 _resampler = null;
 
                 _waveOut?.Stop();
@@ -638,7 +638,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
             //16bit PCM Audio
             //TODO: Clean  - remove if we havent received audio in a while?
             // If we have recieved audio, create a new buffered audio and read it
-            ClientAudioProvider client = null;
+            ClientAudioProvider client;
             if (_clientsBufferedAudio.ContainsKey(audio.OriginalClientGuid))
             {
                 client = _clientsBufferedAudio[audio.OriginalClientGuid];
@@ -656,7 +656,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
 
         private void RemoveClientBuffer(SRClient srClient)
         {
-            ClientAudioProvider clientAudio = null;
+            ClientAudioProvider clientAudio;
             _clientsBufferedAudio.TryRemove(srClient.ClientGuid, out clientAudio);
 
             if (clientAudio == null)
