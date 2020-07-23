@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Ciribob.DCS.SimpleRadio.Standalone.Common;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Common;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network.DCS.Models
 {

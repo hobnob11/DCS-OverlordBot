@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.UI;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Client.UI;
+using System.Collections.Generic;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Preferences
 {

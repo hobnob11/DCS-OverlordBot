@@ -1,4 +1,10 @@
-﻿using System;
+﻿using IWshRuntimeLibrary;
+using Microsoft.Win32;
+using NLog;
+using NLog.Config;
+using NLog.Targets;
+using NLog.Targets.Wrappers;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -6,22 +12,13 @@ using System.Reflection;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
-using IWshRuntimeLibrary;
-using MahApps.Metro.Controls;
-using Microsoft.Win32;
-using NLog;
-using NLog.Config;
-using NLog.Targets;
-using NLog.Targets.Wrappers;
 using Application = System.Windows.Application;
-using MessageBox = System.Windows.MessageBox;
 using File = System.IO.File;
-using ThreadState = System.Diagnostics.ThreadState;
+using MessageBox = System.Windows.MessageBox;
 
 namespace Installer
 {

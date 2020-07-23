@@ -1,11 +1,10 @@
-﻿using System;
-using System.ComponentModel;
-using System.Net;
-using System.Net.Sockets;
-using System.Windows.Media;
-using Ciribob.DCS.SimpleRadio.Standalone.Common.DCSState;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Common.DCSState;
 using Ciribob.DCS.SimpleRadio.Standalone.Common.Helpers;
 using Newtonsoft.Json;
+using System;
+using System.ComponentModel;
+using System.Net;
+using System.Windows.Media;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Common.Network
 {

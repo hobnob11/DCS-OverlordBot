@@ -1,5 +1,5 @@
-﻿using System;
-using Ciribob.DCS.SimpleRadio.Standalone.Common.DCSState;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Common.DCSState;
+using System;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Common
 {

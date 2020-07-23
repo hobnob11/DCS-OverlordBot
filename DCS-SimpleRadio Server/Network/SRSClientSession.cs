@@ -1,15 +1,13 @@
 ﻿using Ciribob.DCS.SimpleRadio.Standalone.Common.Network;
 using NetCoreServer;
+using Newtonsoft.Json;
+using NLog;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using NLog;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
 {

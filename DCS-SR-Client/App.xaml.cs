@@ -1,21 +1,16 @@
-﻿using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Security.Principal;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
-using MahApps.Metro.Controls;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
 using NLog.Targets.Wrappers;
 using Sentry;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Security.Principal;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace DCS_SR_Client
 {

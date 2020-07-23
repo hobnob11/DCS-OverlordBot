@@ -1,13 +1,8 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Diagnostics;
-using System.Linq;
-using System.Net;
 using System.Security.Principal;
-using System.Threading.Tasks;
 using System.Windows;
-using NLog;
-using Octokit;
-using Application = System.Windows.Application;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Common
 {

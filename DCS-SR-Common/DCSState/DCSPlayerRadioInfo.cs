@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Ciribob.DCS.SimpleRadio.Standalone.Common.DCSState;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Common.DCSState;
 using Ciribob.DCS.SimpleRadio.Standalone.Common.Helpers;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Common
 {

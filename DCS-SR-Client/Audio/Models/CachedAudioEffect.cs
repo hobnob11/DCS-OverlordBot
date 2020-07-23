@@ -1,8 +1,7 @@
-﻿using System;
-using System.IO;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Properties;
-using NAudio.Wave;
+﻿using NAudio.Wave;
 using NLog;
+using System;
+using System.IO;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client
 {

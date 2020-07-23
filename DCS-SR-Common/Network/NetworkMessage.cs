@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using Ciribob.DCS.SimpleRadio.Standalone.Common.Helpers;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Common.Helpers;
 using Newtonsoft.Json;
-using NLog.Layouts;
+using System.Collections.Generic;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Common.Network
 {

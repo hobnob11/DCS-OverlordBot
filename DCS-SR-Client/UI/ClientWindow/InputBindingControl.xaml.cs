@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
+using System.Windows;
 using System.Windows.Controls;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client.UI
 {

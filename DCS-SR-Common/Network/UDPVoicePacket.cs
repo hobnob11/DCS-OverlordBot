@@ -1,7 +1,6 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Text;
-using System.Windows.Documents;
-using NLog;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Common.Network
 {

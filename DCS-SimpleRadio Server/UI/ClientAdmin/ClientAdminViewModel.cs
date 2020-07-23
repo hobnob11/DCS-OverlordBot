@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows.Threading;
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
 using Ciribob.DCS.SimpleRadio.Standalone.Server.Network;
 using NLog;
+using System;
+using System.Collections.ObjectModel;
+using System.Windows.Threading;
 using LogManager = NLog.LogManager;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Server.UI.ClientAdmin

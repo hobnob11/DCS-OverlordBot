@@ -1,6 +1,4 @@
-﻿using System;
-using Ciribob.DCS.SimpleRadio.Standalone.Common.Helpers;
-using Newtonsoft.Json;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Common.Helpers;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Common
 {

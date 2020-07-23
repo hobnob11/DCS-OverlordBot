@@ -1,17 +1,15 @@
-﻿using System;
-using System.Diagnostics;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Audio;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Client.Audio;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers;
+using Ciribob.DCS.SimpleRadio.Standalone.Client.DSP;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.UI;
 using Ciribob.DCS.SimpleRadio.Standalone.Common;
+using FragLabs.Audio.Codecs;
 using MathNet.Filtering;
 using NAudio.Dsp;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.DSP;
-using FragLabs.Audio.Codecs;
 using NLog;
+using System;
 using static Ciribob.DCS.SimpleRadio.Standalone.Common.RadioInformation;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client

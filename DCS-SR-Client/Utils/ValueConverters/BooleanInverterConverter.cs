@@ -3,7 +3,7 @@ using System.Windows.Data;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Utils.ValueConverters
 {
-	class BooleanInverterConverter : IValueConverter
+    class BooleanInverterConverter : IValueConverter
     {
 		public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
 		{

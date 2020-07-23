@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Common.Setting;
+using NLog;
+using SharpConfig;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Windows;
-using NLog;
-using SharpConfig;
-using Ciribob.DCS.SimpleRadio.Standalone.Common.Setting;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Settings
 {

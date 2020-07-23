@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Threading;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Network.DCS;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Client.Network.DCS;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Network.LotATC;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Network.VAICOM;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
@@ -20,6 +10,14 @@ using Ciribob.DCS.SimpleRadio.Standalone.Common.Setting;
 using Easy.MessageHub;
 using Newtonsoft.Json;
 using NLog;
+using System;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
 {

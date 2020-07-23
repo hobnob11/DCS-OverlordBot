@@ -1,5 +1,4 @@
 ﻿using System;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Settings
 {

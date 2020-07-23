@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers;
 using NAudio.Utils;
 using NAudio.Wave;
 using NLog;
+using System;
+using System.Collections.Generic;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio
 {

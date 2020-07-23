@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Client.Preferences;
+using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
+using Ciribob.DCS.SimpleRadio.Standalone.Client.Utils;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Preferences;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Utils;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client.UI.ClientWindow.Favourites
 {

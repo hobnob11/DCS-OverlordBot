@@ -1,12 +1,12 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Threading;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Network;
+﻿using Ciribob.DCS.SimpleRadio.Standalone.Client.Network;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
 using Ciribob.DCS.SimpleRadio.Standalone.Common.Setting;
 using MahApps.Metro.Controls;
 using NLog;
+using System;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client.UI
 {
