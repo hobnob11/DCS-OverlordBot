@@ -19,8 +19,10 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
         public EventDrivenResampler(bool windowsN, WaveFormat input,WaveFormat output)
         {
             this.windowsN = windowsN;
-            buf = new BufferedWaveProvider(input);
-            buf.ReadFully = false;
+            buf = new BufferedWaveProvider(input)
+            {
+                ReadFully = false
+            };
 
             if (output.BitsPerSample > input.BitsPerSample)
             {

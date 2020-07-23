@@ -80,10 +80,11 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio
 
                 _waveOut = new WasapiOut(speakers, AudioClientShareMode.Shared, true, 80, windowsN);
 
-                _buffBufferedWaveProvider =
-                    new BufferedWaveProvider(new WaveFormat(AudioManager.INPUT_SAMPLE_RATE, 16, 1));
-                _buffBufferedWaveProvider.ReadFully = true;
-                _buffBufferedWaveProvider.DiscardOnBufferOverflow = true;
+                _buffBufferedWaveProvider = new BufferedWaveProvider(new WaveFormat(AudioManager.INPUT_SAMPLE_RATE, 16, 1))
+                {
+                    ReadFully = true,
+                    DiscardOnBufferOverflow = true
+                };
 
                 RadioFilter filter = new RadioFilter(_buffBufferedWaveProvider.ToSampleProvider());
 
@@ -92,8 +93,10 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio
 
                 //add final volume boost to all mixed audio
                 _volumeSampleProvider = new VolumeSampleProviderWithPeak(natoEffect.ToSampleProvider(),
-                    (peak => SpeakerMax = (float) VolumeConversionHelper.ConvertFloatToDB(peak)));
-                _volumeSampleProvider.Volume = SpeakerBoost;
+                    (peak => SpeakerMax = (float)VolumeConversionHelper.ConvertFloatToDB(peak)))
+                {
+                    Volume = SpeakerBoost
+                };
 
 
                 if (speakers.AudioClient.MixFormat.Channels == 1)
@@ -151,8 +154,10 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio
 
                 device.AudioEndpointVolume.Mute = false;
 
-                _wasapiCapture = new WasapiCapture(device, true);
-                _wasapiCapture.ShareMode = AudioClientShareMode.Shared;
+                _wasapiCapture = new WasapiCapture(device, true)
+                {
+                    ShareMode = AudioClientShareMode.Shared
+                };
                 _wasapiCapture.DataAvailable += WasapiCaptureOnDataAvailable;
                 _wasapiCapture.RecordingStopped += WasapiCaptureOnRecordingStopped;
 

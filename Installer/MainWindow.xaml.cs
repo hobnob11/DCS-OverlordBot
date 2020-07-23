@@ -233,11 +233,11 @@ namespace Installer
 
             var config = new LoggingConfiguration();
 
-            var fileTarget = new FileTarget();
-
-            fileTarget.FileName = "${basedir}/installer-log.txt";
-            fileTarget.Layout =
-                @"${longdate} | ${logger} | ${message} ${exception:format=toString,Data:maxInnerExceptionLevel=2}";
+            var fileTarget = new FileTarget
+            {
+                FileName = "${basedir}/installer-log.txt",
+                Layout = @"${longdate} | ${logger} | ${message} ${exception:format=toString,Data:maxInnerExceptionLevel=2}"
+            };
 
             var wrapper = new AsyncTargetWrapper(fileTarget, 5000, AsyncTargetWrapperOverflowAction.Discard);
             config.AddTarget("file", wrapper);
@@ -295,8 +295,10 @@ namespace Installer
 
             InstallButton.Content = "Installing...";
 
-            _progressBarDialog = new ProgressBarDialog();
-            _progressBarDialog.Owner = this;
+            _progressBarDialog = new ProgressBarDialog
+            {
+                Owner = this
+            };
             _progressBarDialog.Show();
 
             var srsPath = srPath.Text;
@@ -1181,8 +1183,10 @@ namespace Installer
                 }
             }
 
-            _progressBarDialog = new ProgressBarDialog();
-            _progressBarDialog.Owner = this;
+            _progressBarDialog = new ProgressBarDialog
+            {
+                Owner = this
+            };
             _progressBarDialog.Show();
             _progressBarDialog.UpdateProgress(false, "Uninstalling SRS");
 

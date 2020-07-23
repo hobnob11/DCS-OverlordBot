@@ -135,8 +135,10 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
 
                 //add final volume boost to all mixed audio
                 _volumeSampleProvider = new VolumeSampleProviderWithPeak(_clientAudioMixer,
-                    (peak => SpeakerMax = (float) VolumeConversionHelper.ConvertFloatToDB(peak)));
-                _volumeSampleProvider.Volume = SpeakerBoost;
+                    (peak => SpeakerMax = (float)VolumeConversionHelper.ConvertFloatToDB(peak)))
+                {
+                    Volume = SpeakerBoost
+                };
 
                 if (speakers.AudioClient.MixFormat.Channels == 1)
                 {
@@ -190,9 +192,11 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
                 {
                     _micWaveOut = new WasapiOut(micOutput, AudioClientShareMode.Shared, true, 40,windowsN);
 
-                    _micWaveOutBuffer = new BufferedWaveProvider(new WaveFormat(AudioManager.INPUT_SAMPLE_RATE, 16, 1));
-                    _micWaveOutBuffer.ReadFully = true;
-                    _micWaveOutBuffer.DiscardOnBufferOverflow = true;
+                    _micWaveOutBuffer = new BufferedWaveProvider(new WaveFormat(AudioManager.INPUT_SAMPLE_RATE, 16, 1))
+                    {
+                        ReadFully = true,
+                        DiscardOnBufferOverflow = true
+                    };
 
                     var sampleProvider = _micWaveOutBuffer.ToSampleProvider();
 
@@ -247,8 +251,10 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
 
                     device.AudioEndpointVolume.Mute = false;
 
-                    _wasapiCapture = new WasapiCapture(device, true);
-                    _wasapiCapture.ShareMode = AudioClientShareMode.Shared;
+                    _wasapiCapture = new WasapiCapture(device, true)
+                    {
+                        ShareMode = AudioClientShareMode.Shared
+                    };
                     _wasapiCapture.DataAvailable += WasapiCaptureOnDataAvailable;
                     _wasapiCapture.RecordingStopped += WasapiCaptureOnRecordingStopped;
 
