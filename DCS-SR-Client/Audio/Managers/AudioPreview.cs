@@ -301,9 +301,8 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio
 
                         //                 _buffBufferedWaveProvider.AddSamples(pcmBytes, 0, pcmBytes.Length);
                         //encode as opus bytes
-                        int len;
                         //need to get framing right for opus -
-                        var buff = _encoder.Encode(pcmBytes, pcmBytes.Length, out len);
+                        var buff = _encoder.Encode(pcmBytes, pcmBytes.Length, out int len);
 
                         if ((buff != null) && (len > 0))
                         {

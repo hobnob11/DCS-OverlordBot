@@ -338,8 +338,6 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
                                     // Parse frequencies into receiving radio priority for selection below
                                     for (var i = 0; i < frequencyCount; i++)
                                     {
-                                        RadioReceivingState state = null;
-                                        bool decryptable;
 
                                         //Check if Global
                                         bool globalFrequency = globalFrequencies.Contains(udpVoicePacket.Frequencies[i]);
@@ -352,12 +350,12 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
 
                                         var radio = _clientStateSingleton.DcsPlayerRadioInfo.CanHearTransmission(
                                             udpVoicePacket.Frequencies[i],
-                                            (RadioInformation.Modulation) udpVoicePacket.Modulations[i],
+                                            (Modulation)udpVoicePacket.Modulations[i],
                                             udpVoicePacket.Encryptions[i],
                                             udpVoicePacket.UnitId,
                                             blockedRadios,
-                                            out state,
-                                            out decryptable);
+                                            out RadioReceivingState state,
+                                            out bool decryptable);
 
                                         float losLoss = 0.0f;
                                         double receivPowerLossPercent = 0.0;
@@ -660,9 +658,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
             {
                 return true;
             }
-
-            SRClient transmittingClient;
-            if (_clients.TryGetValue(udpVoicePacket.Guid, out transmittingClient))
+            if (_clients.TryGetValue(udpVoicePacket.Guid, out SRClient transmittingClient))
             {
                 var myLatLng= _clientStateSingleton.PlayerCoaltionLocationMetadata.LngLngPosition;
                 var clientLatLng = transmittingClient.LatLngPosition;
@@ -688,8 +684,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
                 return true;
             }
 
-            SRClient transmittingClient;
-            if (_clients.TryGetValue(transmissingClientGuid, out transmittingClient))
+            if (_clients.TryGetValue(transmissingClientGuid, out SRClient transmittingClient))
             {
                 double dist;
                
@@ -849,13 +844,12 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
             // List of radios the transmission is sent to (can me multiple if simultaneous transmission is enabled)
             List<RadioInformation> transmittingRadios;
             //if either PTT is true, a microphone is available && socket connected etc
-            int sendingOn;
             if (_ready
                 && _listener != null
                 && _clientStateSingleton.DcsPlayerRadioInfo.IsCurrent()
                 && _audioInputSingleton.MicrophoneAvailable
                 && (bytes != null)
-                && (transmittingRadios = PTTPressed(out sendingOn)).Count >0 )
+                && (transmittingRadios = PTTPressed(out int sendingOn)).Count >0 )
                 //can only send if DCS is connected
             {
                 try

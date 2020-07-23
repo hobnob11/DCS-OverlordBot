@@ -352,8 +352,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
                         Buffer.BlockCopy(pcmShort, 0, pcmBytes, 0, pcmBytes.Length);
 
                         //encode as opus bytes
-                        int len;
-                        var buff = _encoder.Encode(pcmBytes, pcmBytes.Length, out len);
+                        var buff = _encoder.Encode(pcmBytes, pcmBytes.Length, out int len);
 
                         if ((_udpVoiceHandler != null) && (buff != null) && (len > 0))
                         {
@@ -451,8 +450,10 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
 
         private void InitMixers()
         {
-            _clientAudioMixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(INPUT_SAMPLE_RATE, 2));
-            _clientAudioMixer.ReadFully = true;
+            _clientAudioMixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(INPUT_SAMPLE_RATE, 2))
+            {
+                ReadFully = true
+            };
         }
 
         private void InitAudioBuffers()
@@ -662,8 +663,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
 
         private void RemoveClientBuffer(SRClient srClient)
         {
-            ClientAudioProvider clientAudio;
-            _clientsBufferedAudio.TryRemove(srClient.ClientGuid, out clientAudio);
+            _clientsBufferedAudio.TryRemove(srClient.ClientGuid, out ClientAudioProvider clientAudio);
 
             if (clientAudio == null)
             {

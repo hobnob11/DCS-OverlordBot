@@ -79,9 +79,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network.DCS
 
                         foreach (var player in playerInfo)
                         {
-                            SRClient client;
-
-                            if (_clients.TryGetValue(player.id, out client))
+                            if (_clients.TryGetValue(player.id, out SRClient client))
                             {
                                 client.LineOfSightLoss = player.los;
 

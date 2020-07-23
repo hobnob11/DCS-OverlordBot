@@ -183,8 +183,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
             while (!_stop)
                 try
                 {
-                    PendingPacket udpPacket = null;
-                    _pendingProcessingPackets.TryTake(out udpPacket, 100000, _pendingProcessingCancellationToken.Token);
+                    _pendingProcessingPackets.TryTake(out PendingPacket udpPacket, 100000, _pendingProcessingCancellationToken.Token);
 
                     if (udpPacket != null)
                     {
@@ -263,8 +262,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
             while (!_stop)
                 try
                 {
-                    OutgoingUDPPackets udpPacket = null;
-                    _outGoing.TryTake(out udpPacket, 100000, _pendingProcessingCancellationToken.Token);
+                    _outGoing.TryTake(out OutgoingUDPPackets udpPacket, 100000, _pendingProcessingCancellationToken.Token);
 
                     if (udpPacket != null)
                     {
@@ -342,15 +340,13 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
                             {
                                 for (int i = 0; i < udpVoice.Frequencies.Length; i++)
                                 {
-                                    RadioReceivingState radioReceivingState = null;
-                                    bool decryptable;
                                     var receivingRadio = radioInfo.CanHearTransmission(udpVoice.Frequencies[i],
                                         (RadioInformation.Modulation)udpVoice.Modulations[i],
                                         udpVoice.Encryptions[i],
                                         udpVoice.UnitId,
                                         _emptyBlockedRadios,
-                                        out radioReceivingState,
-                                        out decryptable);
+                                        out RadioReceivingState radioReceivingState,
+                                        out bool decryptable);
 
                                     //only send if we can hear!
                                     if (receivingRadio != null)

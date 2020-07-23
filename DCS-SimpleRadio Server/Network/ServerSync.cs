@@ -99,8 +99,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
             {
 
                 //removed
-                SRClient client;
-                _clients.TryRemove(state.SRSGuid, out client);
+                _clients.TryRemove(state.SRSGuid, out SRClient client);
 
                 if (client != null)
                 {

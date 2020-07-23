@@ -130,8 +130,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
             while (!_stop)
                 try
                 {
-                    PendingPacket udpPacket = null;
-                    _pendingProcessingPackets.TryTake(out udpPacket, 100000, _pendingProcessingCancellationToken.Token);
+                    _pendingProcessingPackets.TryTake(out PendingPacket udpPacket, 100000, _pendingProcessingCancellationToken.Token);
 
                     if (udpPacket != null)
                     {
@@ -208,8 +207,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
             while (!_stop)
                 try
                 {
-                    OutgoingUDPPackets udpPacket = null;
-                    _outGoing.TryTake(out udpPacket, 100000, _pendingProcessingCancellationToken.Token);
+                    _outGoing.TryTake(out OutgoingUDPPackets udpPacket, 100000, _pendingProcessingCancellationToken.Token);
 
                     if (udpPacket != null)
                     {

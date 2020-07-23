@@ -140,9 +140,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network.LotATC
 
         private void HandleLOSResponse(LotATCMessageWrapper.LotATCLineOfSightResponse response)
         {
-            SRClient client;
-
-            if (_clients.TryGetValue(response.clientId, out client))
+            if (_clients.TryGetValue(response.clientId, out SRClient client))
             {
                 //1 is total loss so if see is false
                 //0 is full line of sight so see is true

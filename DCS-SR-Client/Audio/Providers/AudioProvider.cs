@@ -131,13 +131,8 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio
                     rightAudio = Convert.ToInt16(audio * right);
                 }
 
-                byte byte1;
-                byte byte2;
-                ConversionHelpers.FromShort(leftAudio, out byte1, out byte2);
-
-                byte byte3;
-                byte byte4;
-                ConversionHelpers.FromShort(rightAudio, out byte3, out byte4);
+                ConversionHelpers.FromShort(leftAudio, out byte byte1, out byte byte2);
+                ConversionHelpers.FromShort(rightAudio, out byte byte3, out byte byte4);
 
                 stereoMix[i * 4] = byte1;
                 stereoMix[i * 4 + 1] = byte2;
