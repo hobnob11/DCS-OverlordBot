@@ -7,13 +7,13 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
 {
     public class NatHandler
     {
-        private int _port;
+        private readonly int _port;
         private NatDevice _device;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private CancellationTokenSource _searchToken;
         private NatDiscoverer _discoverer;
-        private Mapping _tcpMapping;
-        private Mapping _udpMapping;
+        private readonly Mapping _tcpMapping;
+        private readonly Mapping _udpMapping;
 
         public NatHandler(int port)
         {

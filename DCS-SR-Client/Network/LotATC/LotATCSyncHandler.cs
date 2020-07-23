@@ -32,7 +32,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network.LotATC
         private readonly string _guid;
         private long _lastSent = 0;
 
-        private double _heightOffset;
+        private readonly double _heightOffset;
 
         public LotATCSyncHandler(DCSRadioSyncManager.ClientSideUpdate clientSideUpdate, string guid)
         {

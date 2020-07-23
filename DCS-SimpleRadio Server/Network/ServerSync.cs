@@ -25,7 +25,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Server.Network
         private readonly IEventAggregator _eventAggregator;
 
         private readonly ServerSettingsStore _serverSettings;
-        private NatHandler _natHandler;
+        private readonly NatHandler _natHandler;
 
 
         public ServerSync(ConcurrentDictionary<string, SRClient> connectedClients, HashSet<IPAddress> _bannedIps,

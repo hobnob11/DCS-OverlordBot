@@ -35,7 +35,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
         private readonly string _guid;
         private ConnectCallback _callback;
         private ExternalAWACSModeConnectCallback _externalAWACSModeCallback;
-        private UpdateUICallback _updateUICallback;
+        private readonly UpdateUICallback _updateUICallback;
         private readonly DCSRadioSyncHandler.NewAircraft _newAircraft;
         private IPEndPoint _serverEndpoint;
         private TcpClient _tcpClient;
@@ -52,8 +52,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
         private VAICOMSyncHandler _vaicomSync;
 
         private long _lastSent = -1;
-        private DispatcherTimer _idleTimeout;
-
+        private readonly DispatcherTimer _idleTimeout;
 
         public SRSClientSyncHandler(string guid, UpdateUICallback uiCallback, DCSRadioSyncHandler.NewAircraft _newAircraft)
         {

@@ -21,7 +21,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network.DCS
         private volatile bool _stop = false;
         private UdpClient _dcsGameGuiUdpListener;
 
-        private ClientStateSingleton _clientStateSingleton = ClientStateSingleton.Instance;
+        private readonly ClientStateSingleton _clientStateSingleton = ClientStateSingleton.Instance;
         private readonly SyncedServerSettings _serverSettings = SyncedServerSettings.Instance;
 
         public DCSGameGuiHandler(DCSRadioSyncManager.ClientSideUpdate clientSideUpdate)

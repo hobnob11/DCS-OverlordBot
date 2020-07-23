@@ -57,7 +57,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Settings
         private InputBinding _lastActiveBinding = InputBinding.ModifierIntercom
             ; //intercom used to represent null as we cant
 
-        private Settings.GlobalSettingsStore _globalSettings = Settings.GlobalSettingsStore.Instance;
+        private readonly GlobalSettingsStore _globalSettings = GlobalSettingsStore.Instance;
 
 
         public InputDeviceManager(Window window, MainWindow.ToggleOverlayCallback _toggleOverlayCallback)

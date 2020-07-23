@@ -95,7 +95,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Settings
         }
         public Dictionary<string, Dictionary<InputBinding, InputDevice>> InputProfiles { get; set; } = new Dictionary<string, Dictionary<InputBinding, InputDevice>>();
 
-        private Dictionary<string, Configuration> InputConfigs = new Dictionary<string, Configuration>();
+        private readonly Dictionary<string, Configuration> InputConfigs = new Dictionary<string, Configuration>();
 
         private readonly GlobalSettingsStore _globalSettings;
 

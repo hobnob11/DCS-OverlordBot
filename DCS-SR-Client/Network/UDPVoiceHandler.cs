@@ -44,7 +44,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
 
         private readonly int JITTER_BUFFER = 50; //in milliseconds
 
-        private ClientStateSingleton _clientStateSingleton = ClientStateSingleton.Instance;
+        private readonly ClientStateSingleton _clientStateSingleton = ClientStateSingleton.Instance;
 
         //    private readonly JitterBuffer _jitterBuffer = new JitterBuffer();
         private UdpClient _listener;
@@ -55,16 +55,16 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
 
         private volatile bool _ready;
 
-        private IPEndPoint _serverEndpoint;
+        private readonly IPEndPoint _serverEndpoint;
 
         private volatile bool _stop;
 
         private Timer _timer;
 
         private long _udpLastReceived = 0;
-        private DispatcherTimer _updateTimer;
+        private readonly DispatcherTimer _updateTimer;
 
-        private RadioReceivingState[] _radioReceivingState;
+        private readonly RadioReceivingState[] _radioReceivingState;
 
         public UdpVoiceHandler(string guid, IPAddress address, int port, AudioManager audioManager,
             InputDeviceManager inputManager)

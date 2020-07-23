@@ -11,13 +11,13 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers
         private readonly bool windowsN;
         private ResamplerDmoStream dmoResampler;
 
-        private WaveFormat input;
-        private WaveFormat output;
-        private WdlResampler resampler;
-        private WdlResamplingSampleProvider mediaFoundationResampler;
-        private BufferedWaveProvider buf;
-        private IWaveProvider waveOut;
-        private int bufferMultiplier = 1;
+        private readonly WaveFormat input;
+        private readonly WaveFormat output;
+        private readonly WdlResampler resampler;
+        private readonly WdlResamplingSampleProvider mediaFoundationResampler;
+        private readonly BufferedWaveProvider buf;
+        private readonly IWaveProvider waveOut;
+        private readonly int bufferMultiplier = 1;
 
         public EventDrivenResampler(bool windowsN, WaveFormat input,WaveFormat output)
         {

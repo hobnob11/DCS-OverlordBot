@@ -204,7 +204,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Settings
 
         public string ConfigFileName { get; } = CFG_FILE_NAME;
 
-        private  ProfileSettingsStore _profileSettingsStore;
+        private readonly ProfileSettingsStore _profileSettingsStore;
         public ProfileSettingsStore ProfileSettingsStore => _profileSettingsStore;
 
         public string Path { get; } = "";
