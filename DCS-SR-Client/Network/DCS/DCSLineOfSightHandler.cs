@@ -211,7 +211,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network.DCS
             {
                 _dcsLOSListener?.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

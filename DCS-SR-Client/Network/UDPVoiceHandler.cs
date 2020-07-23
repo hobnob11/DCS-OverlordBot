@@ -229,7 +229,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
                             _encodedAudio.Add(bytes);
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         //  logger.Error(e, "error listening for UDP Voip");
                     }
@@ -270,7 +270,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
             {
                 _listener.Close();
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
 
@@ -1008,7 +1008,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Network
                         try
                         {
                             _listener?.Close();
-                        }catch(Exception ex)
+                        }catch(Exception)
                         { }
 
                         _listener = null;

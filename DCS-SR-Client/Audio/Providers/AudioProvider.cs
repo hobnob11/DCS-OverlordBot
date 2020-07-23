@@ -71,7 +71,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Audio
             {
                 balance  = globalSettings.GetClientSetting(settingType).FloatValue;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //ignore
             }

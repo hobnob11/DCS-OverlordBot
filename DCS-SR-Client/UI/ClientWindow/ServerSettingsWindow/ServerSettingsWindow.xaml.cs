@@ -68,7 +68,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.UI
 
                 NodeLimit.Content = settings.RetransmitNodeLimit;
             }
-            catch (IndexOutOfRangeException ex)
+            catch (IndexOutOfRangeException)
             {
                 Logger.Warn("Missing Server Option - Connected to old server");
             }
