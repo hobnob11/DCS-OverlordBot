@@ -31,6 +31,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiViewer", "TaxiViewer\Ta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCS-SR-OverlordBot-Tests", "DCS-SR-OverlordBot-Tests\DCS-SR-OverlordBot-Tests.csproj", "{75E39994-EACE-4E82-A8B1-BE9DB9A5579E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinC-Client", "RurouniJones-CinC-Client\CinC-Client.csproj", "{10E1530C-12A9-43EE-A97B-632E897F33E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinC-Console", "RurouniJones-CinC-Console\CinC-Console.csproj", "{8FEAD504-BE88-4222-B6D2-401C3BD24E0A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{10E1530C-12A9-43EE-A97B-632E897F33E1} = {10E1530C-12A9-43EE-A97B-632E897F33E1}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +110,22 @@ Global
 		{75E39994-EACE-4E82-A8B1-BE9DB9A5579E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{75E39994-EACE-4E82-A8B1-BE9DB9A5579E}.Release|x64.ActiveCfg = Release|Any CPU
 		{75E39994-EACE-4E82-A8B1-BE9DB9A5579E}.Release|x64.Build.0 = Release|Any CPU
+		{10E1530C-12A9-43EE-A97B-632E897F33E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10E1530C-12A9-43EE-A97B-632E897F33E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10E1530C-12A9-43EE-A97B-632E897F33E1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{10E1530C-12A9-43EE-A97B-632E897F33E1}.Debug|x64.Build.0 = Debug|Any CPU
+		{10E1530C-12A9-43EE-A97B-632E897F33E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10E1530C-12A9-43EE-A97B-632E897F33E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10E1530C-12A9-43EE-A97B-632E897F33E1}.Release|x64.ActiveCfg = Release|Any CPU
+		{10E1530C-12A9-43EE-A97B-632E897F33E1}.Release|x64.Build.0 = Release|Any CPU
+		{8FEAD504-BE88-4222-B6D2-401C3BD24E0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FEAD504-BE88-4222-B6D2-401C3BD24E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FEAD504-BE88-4222-B6D2-401C3BD24E0A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8FEAD504-BE88-4222-B6D2-401C3BD24E0A}.Debug|x64.Build.0 = Debug|Any CPU
+		{8FEAD504-BE88-4222-B6D2-401C3BD24E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FEAD504-BE88-4222-B6D2-401C3BD24E0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FEAD504-BE88-4222-B6D2-401C3BD24E0A}.Release|x64.ActiveCfg = Release|Any CPU
+		{8FEAD504-BE88-4222-B6D2-401C3BD24E0A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
