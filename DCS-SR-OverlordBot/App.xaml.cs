@@ -9,7 +9,6 @@ using Ciribob.DCS.SimpleRadio.Standalone.Client.Overlord;
 using NLog;
 using Npgsql;
 using Npgsql.Logging;
-using RurouniJones.DCS.Airfields;
 
 namespace DCS_SR_Client
 {

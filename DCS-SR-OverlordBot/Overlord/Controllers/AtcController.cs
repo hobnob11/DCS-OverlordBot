@@ -94,7 +94,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Overlord.Controllers
                 name = "ATC";
             }
 
-            return $"{radioCall.Sender.Callsign}, {name}, ";
+            return $"{radioCall.Sender.Callsign} {name}, ";
         }
     }
 }

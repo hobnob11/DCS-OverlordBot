@@ -193,6 +193,12 @@
                                Height="26"
                                HorizontalAlignment="Center" 
                                Margin="5,0,5,0" />
+                        <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" Content="CinC" />
+                        <Image x:Name="CinCConnectionStatus"
+                               Source="{Binding Path=ClientState.IsCinCConnected, Converter={StaticResource ConnectionStatusImageConverter}}"
+                               Height="26"
+                               HorizontalAlignment="Center" 
+                               Margin="5,0,5,0" />
                     </StackPanel>
                 </StackPanel>
             </GroupBox>

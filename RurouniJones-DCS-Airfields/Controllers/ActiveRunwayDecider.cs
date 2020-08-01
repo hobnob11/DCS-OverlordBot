@@ -36,7 +36,7 @@ namespace RurouniJones.DCS.Airfields.Controllers
 
         private static List<Runway> GetActiveRunwaysByWind(Airfield Airfield)
         {
-            return GetActiveRunwaysByHeading(Airfield, Airfield.WindSource);
+            return GetActiveRunwaysByHeading(Airfield, (int)Airfield.WindHeading);
         }
 
         private static List<Runway> GetActiveRunwaysByHeading(Airfield Airfield, int heading)

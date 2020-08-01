@@ -39,7 +39,7 @@ namespace RurouniJones.DCS.Airfields.Controllers.Tests
             var airfield = Populator.Airfields.First(af => af.Name.Equals(scenario.Airfield));
             var controller = new GroundController(airfield);
 
-            airfield.WindSource = scenario.Wind;
+            airfield.WindHeading = scenario.Wind;
             TaxiInstructions expected = new TaxiInstructions()
             {
                 DestinationName = scenario.Destination,

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Threading;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Network;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
+using Ciribob.DCS.SimpleRadio.Standalone.Client.Overlord.GameState;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings.RadioChannels;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.UI.RadioOverlayWindow.PresetChannels;
 using Ciribob.DCS.SimpleRadio.Standalone.Common;
@@ -127,6 +127,9 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Singletons
         public bool IsLotATCConnected { get { return LotATCLastReceived >= DateTime.Now.Ticks - 50000000; } }
 
         public bool IsGameGuiConnected { get { return DcsGameGuiLastReceived >= DateTime.Now.Ticks - 100000000; } }
+
+        public bool IsCinCConnected { get { return AirfieldUpdater.Instance.IsConnected; } }
+
         public bool IsGameExportConnected { get { return DcsExportLastReceived >= DateTime.Now.Ticks - 100000000; } }
         // Indicates an active game connection has been detected (1 tick = 100ns, 100000000 ticks = 10s stale timer), not updated by EAM
         public bool IsGameConnected { get { return IsGameGuiConnected && IsGameExportConnected; } }
@@ -143,6 +146,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Singletons
             DcsExportLastReceived = 0;
             _timer.Interval = TimeSpan.FromSeconds(1);
             _timer.Tick += (s, e) => {
+                NotifyPropertyChanged("IsCinCConnected");
                 NotifyPropertyChanged("IsGameConnected");
                 NotifyPropertyChanged("IsLotATCConnected");
                 NotifyPropertyChanged("ExternalAWACSModeConnected");

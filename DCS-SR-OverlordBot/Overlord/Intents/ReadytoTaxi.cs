@@ -12,8 +12,6 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Overlord.Intents
 {
     class ReadytoTaxi
     {
-        private static readonly List<Airfield> Airfields = Populator.Airfields;
-
         private static readonly Array instructionsVariants = new ArrayList() { "", "taxi to", "proceed to", "head to" }.ToArray();
         private static readonly Array viaVariants = new ArrayList() { "via", "along", "using" }.ToArray();
 
@@ -30,7 +28,7 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Overlord.Intents
             Airfield airfield;
             try
             {
-                airfield = Airfields.First(x => x.Name == radioCall.ReceiverName);
+                airfield = Populator.Airfields.First(x => x.Name == radioCall.ReceiverName);
             }
             catch (InvalidOperationException)
             {

@@ -83,10 +83,22 @@ namespace RurouniJones.DCS.Airfields.Structure
         }
 
         /// <summary>
-        /// Direciton the wind is COMING from
+        /// Direction the wind is COMING from
         /// </summary>
         [JsonIgnore]
-        public int WindSource { get; set; } = 90;
+        public double WindHeading { get; set; } = 90;
+
+        /// <summary>
+        /// Wind speed in m/s
+        /// </summary>
+        [JsonIgnore]
+        public double WindSpeed { get; set; }
+
+        /// <summary>
+        /// Owning coalition ID
+        /// </summary>
+        [JsonIgnore]
+        public int Coalition { get; set; }
 
         [JsonIgnore]
         public readonly AdjacencyGraph<TaxiPoint, TaggedEdge<TaxiPoint, string>> TaxiNavigationGraph = new AdjacencyGraph<TaxiPoint, TaggedEdge<TaxiPoint, string>>();

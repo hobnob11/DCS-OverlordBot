@@ -166,5 +166,32 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.Properties {
                 return ((string)(this["ServerName"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CinCEnabled {
+            get {
+                return ((bool)(this["CinCEnabled"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("add_cinc_server_host_here")]
+        public string CincServerHost {
+            get {
+                return ((string)(this["CincServerHost"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CincServerPort {
+            get {
+                return ((int)(this["CincServerPort"]));
+            }
+        }
     }
 }

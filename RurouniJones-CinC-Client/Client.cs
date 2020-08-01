@@ -12,32 +12,29 @@ namespace RurouniJones.CinC.ClientLib
     {
         private readonly string _hostname = "localhost";
         private readonly int _port = 9001;
-        private readonly TcpClient _tcpClient;
+        private readonly TcpClient _tcpClient = new TcpClient();
 
-        public Client()
+        public bool IsConnected
         {
-            _tcpClient = new TcpClient(_hostname, _port)
+            get
             {
-                NoDelay = true
-            };
+                return (_tcpClient != null && _tcpClient.Connected);
+            }
         }
+
+        public Client() { }
 
         public Client(string hostname, int port)
         {
             _hostname = hostname;
             _port = port;
-
-            _tcpClient = new TcpClient(_hostname, _port)
-            {
-                NoDelay = true
-            };
         }
 
         public IEnumerable<Airfield> GetAirfields()
         {
-            if(_tcpClient.Connected == false)
+            if (!_tcpClient.Connected && !_tcpClient.ConnectAsync(_hostname, _port).Wait(10000))
             {
-                _tcpClient.Connect(_hostname, _port);
+                return new List<Airfield>();
             }
 
             StreamWriter streamWriter = new StreamWriter(_tcpClient.GetStream(), Encoding.ASCII);
@@ -49,11 +46,18 @@ namespace RurouniJones.CinC.ClientLib
             };
 
             string jsonCommand = JsonConvert.SerializeObject(command);
+            string response;
+            try
+            {
+                streamWriter.WriteLine(jsonCommand);
+                streamWriter.Flush();
 
-            streamWriter.WriteLine(jsonCommand);
-            streamWriter.Flush();
-
-            string response = streamReader.ReadLine();
+                response = streamReader.ReadLine();
+            } catch (SocketException)
+            {
+                _tcpClient.Close();
+                return new List<Airfield>();
+            }
 
             return JsonConvert.DeserializeObject<List<Airfield>>(response);
         }

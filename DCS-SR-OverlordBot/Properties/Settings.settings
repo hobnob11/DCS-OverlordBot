@@ -50,5 +50,14 @@
     <Setting Name="ServerName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">add_server_name_here</Value>
     </Setting>
+    <Setting Name="CinCEnabled" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CincServerHost" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">add_cinc_server_host_here</Value>
+    </Setting>
+    <Setting Name="CincServerPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

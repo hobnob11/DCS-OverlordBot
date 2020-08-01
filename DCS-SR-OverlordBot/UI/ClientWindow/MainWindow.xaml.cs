@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -10,22 +8,19 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
-using Ciribob.DCS.SimpleRadio.Standalone.Client.Audio;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Audio.Managers;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Input;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Network;
+using Ciribob.DCS.SimpleRadio.Standalone.Client.Overlord.GameState;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Preferences;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Settings;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Singletons;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.UI.ClientWindow.Favourites;
 using Ciribob.DCS.SimpleRadio.Standalone.Client.Utils;
 using Ciribob.DCS.SimpleRadio.Standalone.Common;
-using Ciribob.DCS.SimpleRadio.Standalone.Common.Network;
 using Easy.MessageHub;
 using MahApps.Metro.Controls;
-using NAudio.CoreAudioApi;
 using NLog;
-using WPFCustomMessageBox;
 
 namespace Ciribob.DCS.SimpleRadio.Standalone.Client.UI
 {
@@ -40,8 +35,6 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.UI
 
         private AudioManager _audioManager;
 
-        private readonly ConcurrentDictionary<string, SRClient> _clients = new ConcurrentDictionary<string, SRClient>();
-
         private readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private SRSClientSyncHandler _client;
         private int _port = 5002;
@@ -52,14 +45,12 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.UI
         private IPAddress _resolvedIp;
         private ServerSettingsWindow _serverSettingsWindow;
 
-        private bool _stop = true;
-
         //used to debounce toggle
         private long _toggleShowHide;
 
-        private readonly DispatcherTimer _updateTimer;
         private readonly DispatcherTimer _redrawUITimer;
-        private MMDeviceCollection outputDeviceList;
+        private readonly DispatcherTimer _airfieldUpdateTimer;
+
         private ServerAddress _serverAddress;
         private readonly DelegateCommand _connectCommand;
 
@@ -125,6 +116,19 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.UI
             _redrawUITimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             _redrawUITimer.Tick += RedrawUITick;
             _redrawUITimer.Start();
+
+            if (Properties.Settings.Default.CinCEnabled == true)
+            {
+                AirfieldUpdater.Instance.HostName = Properties.Settings.Default.CincServerHost;
+                AirfieldUpdater.Instance.Port = Properties.Settings.Default.CincServerPort;
+
+                Logger.Debug($"Starting Airfield Update Timer");
+                _airfieldUpdateTimer = new DispatcherTimer() {
+                    Interval = TimeSpan.FromMinutes(1)
+                };
+                _airfieldUpdateTimer.Tick += new EventHandler(AirfieldUpdater.Instance.UpdateAirfields);
+                _airfieldUpdateTimer.Start();
+            }
 
             Logger.Debug("Connecting on Startup");
             Connect();
@@ -505,9 +509,6 @@ namespace Ciribob.DCS.SimpleRadio.Standalone.Client.UI
 
             //save window position
             base.OnClosing(e);
-
-            //stop timer
-            _updateTimer?.Stop();
 
             // Stop UI redraw timer
             _redrawUITimer?.Stop();

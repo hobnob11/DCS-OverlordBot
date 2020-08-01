@@ -403,6 +403,7 @@
     <Compile Include="Overlord\Controllers\AtcController.cs" />
     <Compile Include="Overlord\Controllers\MuteController.cs" />
     <Compile Include="Overlord\Controllers\AwacsController.cs" />
+    <Compile Include="Overlord\GameState\AirfieldUpdater.cs" />
     <Compile Include="Overlord\RadioCalls\BaseRadioCall.cs" />
     <Compile Include="Overlord\Intents\ReadytoTaxi.cs" />
     <Compile Include="Overlord\Constants.cs" />
@@ -642,6 +643,10 @@
     <ProjectReference Include="..\OpusWrapper\OpusWrapper.csproj">
       <Project>{838bdb0b-5eb1-4c1e-9026-0a8842ac00c6}</Project>
       <Name>OpusWrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RurouniJones-CinC-Client\CinC-Client.csproj">
+      <Project>{10e1530c-12a9-43ee-a97b-632e897f33e1}</Project>
+      <Name>CinC-Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\RurouniJones-DCS-Airfields\DCS-Airfields.csproj">
       <Project>{cd11cc7c-8eee-4c38-9534-b5a7a4f6800a}</Project>
