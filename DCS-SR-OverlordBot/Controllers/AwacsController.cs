@@ -54,7 +54,7 @@ namespace RurouniJones.DCS.OverlordBot.Controllers
         {
             if (!IsAddressedToController(radioCall) || radioCall.Sender.Coalition == Coalition.Neutral)
                 return null;
-            return ResponsePrefix(radioCall) + Intents.Declare.Process(new DeclareRadioCall(radioCall)).Result;
+            return ResponsePrefix(radioCall) + "we do not support declare calls.";
 
         }
 
